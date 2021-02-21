@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body>
+    <div class="slideBox">
+        <img class="slideImg first" src="1.jpg">
+        <img class="slideImg second" src="2.jpg">
+        <img class="slideImg third" src="3.jpg">
+        <img class="slideImg fourth" src="4.jpg">
+        <a class="btn left" onclick="left()"><i class="far fa-chevron-left"></i></a>
+        <a class="btn right" onclick="right()"><i class="far fa-chevron-right"></i></a>
+    </div>
+<script>
+   
+let images = document.getElementsByClassName("slideImg");
+let now = 0;
+goster(0);
+
+function goster(index){
+        for (let i = 0; i < images.length; i++) {
+            if (i == index) {
+                let nowElement = images[i];
+                nowElement.style.visibility = "visible";
+                nowElement.style.opacity = "1";
+            }else{
+                let other = images[i];
+                other.style.visibility = "hidden";
+                other.style.opacity = "0";
+            }
+            
+            
+        }
+        if (now == 0) {
+            let left = document.querySelector(".left");
+            left.style.display = "none";
+
+        }else{
+            let left = document.querySelector(".left");
+            left.style.display = "unset";
+        }
+        if (now == images.length - 1) {
+            let right = document.querySelector(".right");
+            right.style.display = "none";
+
+        }else{
+            let right = document.querySelector(".right");
+            right.style.display = "unset";
+        }
+        
+}
+
+
+function left(){
+    if (now != 0) {
+        now -= 1 ;
+        goster(now);
+    }
+    if (now == 0) {
+        console.log(now);
+    }
+    
+}
+function right(){
+    if (now != (images.length - 1)) {
+        now += 1 ;
+        goster(now);
+    }
+    
+}
+    
+   
+
+
+</script>
+
+</body>
+</html>
